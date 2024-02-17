@@ -4,7 +4,7 @@
   "description": "Proyecto para repasar conceptos de node (express), docker y dynamo necesarios para el desarrollo del microservicio de autenticacion para la pagina de acm javeriana",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js"
   },
   "author": "Esteban Salazar",
   "license": "ISC",
