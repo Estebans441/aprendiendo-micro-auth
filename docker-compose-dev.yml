@@ -1,9 +1,0 @@
-services:
-  server:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - 3000:1234
-    volumes:
-      - .:/home/app
