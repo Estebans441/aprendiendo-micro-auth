@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Proyecto para repasar conceptos de node (express), docker y dynamo necesarios para el desarrollo del microservicio de autenticacion para la pagina de acm javeriana",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon --legacy-watch index.js"
+    "start": "node ./src/index.js",
+    "start:dev": "nodemon --legacy-watch ./src/index.js"
   },
   "author": "Esteban Salazar",
   "license": "ISC",
@@ -14,6 +15,6 @@
     "express": "4.18.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "nodemon": "3.0.3"
   }
 }
