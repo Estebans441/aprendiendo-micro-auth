@@ -1,3 +1,5 @@
-import { authService } from './services/authService.js';
+import { authService } from './services/auth-service.js';
+import dotenv from 'dotenv';
 
-authService(3000);
+dotenv.config(".env");
+authService(3000, process.env.SECRET);

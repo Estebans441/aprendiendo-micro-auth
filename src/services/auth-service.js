@@ -1,7 +1,7 @@
 import express, { json } from 'express';
 import { authRouter } from '../routes/auth-router.js';
 
-export const authService = (PORT) =>{
+export const authService = (PORT, secret) =>{
     const app = express();
     app.disable('x-powered-by');
 
@@ -9,7 +9,7 @@ export const authService = (PORT) =>{
     app.use(json());
 
     // Router
-    app.use('/api/auth', authRouter());
+    app.use('/auth', authRouter(secret));
 
     // Listen on port PORT
     app.listen(PORT, () => {

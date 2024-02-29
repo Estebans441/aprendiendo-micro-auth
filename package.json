@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Proyecto para repasar conceptos de node (express), docker y dynamo necesarios para el desarrollo del microservicio de autenticacion para la pagina de acm javeriana",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
     "start:dev": "nodemon --legacy-watch ./src/index.js"
@@ -12,7 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "2.1560.0",
-    "express": "4.18.2"
+    "dotenv": "16.4.5",
+    "express": "4.18.2",
+    "jsonwebtoken": "9.0.2"
   },
   "devDependencies": {
     "nodemon": "3.0.3"

@@ -7,15 +7,15 @@ services:
       context: .
       target: production
     ports:
-      - "3000:1234"
+      - "3000:3000"
 
   my-service-dev:
     container_name: my-service-dev
     restart: unless-stopped
     build: 
-      context: .
+      context: ./src
       target: dev
     ports:
-      - "1234:1234"
+      - "3000:3000"
     volumes:
       - .:/project

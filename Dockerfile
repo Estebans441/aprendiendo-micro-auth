@@ -9,11 +9,12 @@ FROM base AS production
 
 ENV NODE_ENV=production
 
-COPY . $DIR
-RUN npm ci
+COPY ./src $DIR
+RUN npm i pnpm -g
+RUN pnpm i
 
 EXPOSE 3000
-CMD ["node", "index.js"]
+CMD ["npm", "run", "start"]
 
 # ----
 FROM base AS dev
