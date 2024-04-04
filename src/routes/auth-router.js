@@ -7,11 +7,11 @@ export const authRouter = (secret) => {
     
     router.post('/register', authController.register);
 
-    router.post('/token', authController.token);
+    router.post('/login', authController.login);
 
     router.get('/public', authController.public);
 
-    router.get('/private', authController.private);
+    router.get('/private', authController.verifyToken, authController.private);
 
     return router;
 }
