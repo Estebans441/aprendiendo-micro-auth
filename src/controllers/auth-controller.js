@@ -8,26 +8,6 @@ export class AuthController {
         this.users = [];
     }
 
-    // register method
-    register = async (req, res) => {
-        try {
-            const result = validateUser(req.body);
-            if (result.error) {
-                return res.status(400).json({ message: result.error });
-            }
-            const newUser = {
-                id: crypto.randomUUID(),
-                ...result.data,
-                password: createHash(result.data.password)
-            };
-            this.users.push(newUser);
-            return res.status(200).json({ message: "User registered successfully" });
-        } catch (error) {
-            console.log(error);
-            return res.status(500).json({ message: "Internal server error" });
-        }
-    }
-
     // login method
     login = async (req, res) => {
         try {
@@ -37,7 +17,8 @@ export class AuthController {
             }
             let { email, password } = result.data;
             password = createHash(password);
-            const user = this.users.find((user) => user.email === email && user.password === password);
+            // const user = this.users.find((user) => user.email === email && user.password === password);
+            const user = { id: '1', email: 'email.com', password: 'password'}
             if (!user) {
                 return res.status(401).json({ message: "Invalid credentials" });
             }
@@ -47,16 +28,6 @@ export class AuthController {
             console.log(error);
             return res.status(500).json({ message: "Internal server error" });
         }
-    }
-
-    // public route (no need token to access)
-    public = async (req, res) => {
-        res.send("I'm public!");
-    }
-
-    // private route (need token to access)
-    private = async (req, res) => {
-        res.status(200).json({message: 'Private'});
     }
 
     // Middleware for token verification
@@ -70,6 +41,22 @@ export class AuthController {
             const payload = jwt.verify(token, this.secret);
             req.user = payload;
             next();
+        } catch (error) {
+            return res.status(401).json({ message: "Invalid token" });
+        }
+    }
+
+    // refresh method
+    refresh = async (req, res) => {
+        try {
+            const header = req.header('Authorization') || '';
+            const token = header.split(' ')[1];
+            if (!token) {
+                return res.status(401).json({ message: "Token not provided" });
+            }
+            const payload = jwt.verify(token, this.secret);
+            const newToken = jwt.sign({ id: payload.id, username: payload.username }, this.secret);
+            return res.status(200).json({ token: newToken });
         } catch (error) {
             return res.status(401).json({ message: "Invalid token" });
         }

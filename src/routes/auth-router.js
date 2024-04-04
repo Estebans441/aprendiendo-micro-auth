@@ -5,13 +5,11 @@ export const authRouter = (secret) => {
     const router = Router();
     const authController = new AuthController(secret);
     
-    router.post('/register', authController.register);
-
     router.post('/login', authController.login);
 
-    router.get('/public', authController.public);
+    router.get('/validate', authController.verifyToken);
 
-    router.get('/private', authController.verifyToken, authController.private);
+    router.get('/refresh', authController.refresh);
 
     return router;
 }
