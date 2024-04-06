@@ -30,6 +30,11 @@ export class AuthController {
         }
     }
 
+    // Validate token
+    validateToken = async(req, res) => {
+        return res.status(200).json({ message: "Token is valid" });
+    }
+
     // Middleware for token verification
     verifyToken = async(req, res, next) => {
         const header = req.header('Authorization') || '';
