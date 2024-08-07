@@ -24,5 +24,4 @@ jobs:
             version: 8  # Optional: specify a pnpm version
     - name: Install dependencies
       run: pnpm install
-    - run: pnpm run build --if-present
     - run: pnpm test
