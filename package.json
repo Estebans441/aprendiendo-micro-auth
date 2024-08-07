@@ -8,6 +8,7 @@
     "start": "node ./src/index.js",
     "start:dev": "nodemon --legacy-watch ./src/index.js",
     "test": "jest",
+    "commit": "git add . && git-cz",
     "semantic-release": "semantic-release --branches main"
   },
   "author": "Esteban Salazar",
