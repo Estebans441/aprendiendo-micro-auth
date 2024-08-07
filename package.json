@@ -1,13 +1,14 @@
 {
   "name": "aprendiendo-micro-auth",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Proyecto para repasar conceptos de node (express), docker y dynamo necesarios para el desarrollo del microservicio de autenticacion para la pagina de acm javeriana",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
     "start:dev": "nodemon --legacy-watch ./src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release --branches main"
   },
   "author": "Esteban Salazar",
   "license": "ISC",
@@ -20,6 +21,14 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "nodemon": "3.0.3"
+    "nodemon": "3.0.3",
+    "semantic-release": "^24.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Estebans441/aprendiendo-micro-auth.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
