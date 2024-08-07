@@ -7,7 +7,7 @@ export const authRouter = (secret) => {
     
     router.post('/login', authController.login);
 
-    router.get('/validate', authController.verifyToken);
+    router.get('/validate', authController.verifyToken, authController.validateToken);
 
     router.get('/refresh', authController.refresh);
 
