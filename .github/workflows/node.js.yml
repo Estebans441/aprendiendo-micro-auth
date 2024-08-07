@@ -23,7 +23,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
     - name: Install pnpm
-      run: npm install -g pnpm
+      run: |
+        npm install -g pnpm
+        export PATH=$(npm bin -g):$PATH
     - name: Install dependencies
       run: pnpm install
     - run: pnpm run build --if-present
